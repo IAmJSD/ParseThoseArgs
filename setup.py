@@ -6,6 +6,9 @@ setup(
     ext_modules=[
         Extension("_parsethoseargs_c_parser", ['./parsethoseargs/python_wrapper.c']),
     ],
-    packages=find_packages(exclude=('tests',))
+    packages=find_packages(exclude=('tests',)),
+    author="Jake Gealer",
+    author_email="jake@auttaja.io",
+    url="https://github.com/JakeMakesStuff/ParseThoseArgs"
 )
 
