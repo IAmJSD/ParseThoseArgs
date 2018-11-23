@@ -13,7 +13,7 @@ In order to get the next argument from it, simply call `next` with the parser as
 arg_count = 1
 while True:
     try:
-        print("Argument {}: {}".format(arg_count, parser))
+        print("Argument {}: {}".format(arg_count, next(parser)))
     except StopIteration:
         break
     arg_count += 1
