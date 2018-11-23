@@ -16,6 +16,7 @@ while True:
         print("Argument {}: {}".format(arg_count, parser))
     except StopIteration:
         break
+    arg_count += 1
 ```
 
 If you want to get the remaining bit of the string being parsed, you can use the property `parser.remaining`.
