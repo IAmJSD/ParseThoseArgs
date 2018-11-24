@@ -28,8 +28,7 @@ class ArgParser:
 
     def __next__(self):
         args = _parsethoseargs_c_parser.ArgParser_Next(
-            self._structure.ParsingString, self._structure.IgnoreQuotes, self._structure.HitAllArgs,
-            self._structure.LastParse
+            self._structure.ParsingString, self._structure.IgnoreQuotes, self._structure.HitAllArgs
         )
         try:
             if args[2] == 1:

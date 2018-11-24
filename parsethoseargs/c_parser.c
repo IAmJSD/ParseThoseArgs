@@ -39,7 +39,9 @@ static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
             if (InQuotes == 1) {
                 // This is the end of some quoted text.
                 ++*parsing_str;
-                structure.LastParse = CurrentParse;
+                structure.LastParse = PyMem_Malloc((int) strlen(CurrentParse) + 1);
+                strcpy(structure.LastParse, CurrentParse);
+                PyMem_Free(CurrentParse);
                 return structure;
             } else {
                 // How do we handle the quote?
@@ -55,7 +57,9 @@ static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
                 // Probably count this as a break.
                 if (!(strcmp(CurrentParse, "") == 0)) {
                     ++*parsing_str;
-                    structure.LastParse = CurrentParse;
+                    structure.LastParse = PyMem_Malloc((int) strlen(CurrentParse) + 1);
+                    strcpy(structure.LastParse, CurrentParse);
+                    PyMem_Free(CurrentParse);
                     return structure;
                 }
             } else {
@@ -73,7 +77,9 @@ static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
     }
 
     structure.ParsingString = "";
-    structure.LastParse = CurrentParse;
+    structure.LastParse = PyMem_Malloc((int) strlen(CurrentParse) + 1);
+    strcpy(structure.LastParse, CurrentParse);
+    PyMem_Free(CurrentParse);
     return structure;
     // All args done! Lets return the structure.
 }
