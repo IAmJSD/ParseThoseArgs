@@ -11,8 +11,9 @@ static PyObject *func_c_parser(PyObject *self, PyObject *args) {
     if (!PyArg_ParseTuple(args, "siis", &structure.ParsingString, &structure.IgnoreQuotes, &structure.HitAllArgs, &structure.LastParse)) {
         return NULL;
     }
-    ArgParserStructure NewParse = ArgParser_Next(structure);
-    return Py_BuildValue("siis", NewParse.ParsingString, NewParse.IgnoreQuotes, NewParse.HitAllArgs, NewParse.LastParse);
+    ArgParserStructure next = ArgParser_Next(structure);
+    PyObject* obj = Py_BuildValue("siis", next.ParsingString, next.IgnoreQuotes, next.HitAllArgs, next.LastParse);
+    return obj;
 }
 // The main function.
 

@@ -2,9 +2,9 @@ from setuptools import setup, Extension, find_packages
 
 setup(
     name="ParseThoseArgs",
-    version="1.1",
+    version="1.2.4",
     ext_modules=[
-        Extension("_parsethoseargs_c_parser", ['./parsethoseargs/python_wrapper.c']),
+        Extension("_parsethoseargs_c_parser", ['./parsethoseargs/python_wrapper.c', './parsethoseargs/c_parser.c']),
     ],
     packages=find_packages(exclude=('tests',)),
     author="Jake Gealer",
