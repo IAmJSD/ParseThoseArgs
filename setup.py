@@ -2,7 +2,7 @@ from setuptools import setup, Extension, find_packages
 
 setup(
     name="ParseThoseArgs",
-    version="1.0",
+    version="1.1",
     ext_modules=[
         Extension("_parsethoseargs_c_parser", ['./parsethoseargs/python_wrapper.c']),
     ],
