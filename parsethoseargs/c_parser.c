@@ -16,9 +16,6 @@ char Quote = '"';
 char Space = ' ';
 // Defines a space.
 
-int MemoryBlock = 1;
-// Defines the memory block.
-
 static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
     if (strcmp(structure.ParsingString, "") == 0) {
         structure.HitAllArgs = 1;
@@ -30,8 +27,7 @@ static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
     // Sets if the parser is inside quotes.
 
     int ParsingStringLength = (int)strlen(structure.ParsingString);
-    char* CurrentParse = calloc(MemoryBlock, ParsingStringLength + 1);
-    MemoryBlock++;
+    char* CurrentParse = calloc(ParsingStringLength, 1);
     // Defines the current parse.
 
     char* parsing_str = structure.ParsingString;
@@ -45,8 +41,7 @@ static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
                 // This is the end of some quoted text.
                 int x = 0;
                 int CurrentParseLength = (int)strlen(CurrentParse);
-                char* NewParseString = calloc(MemoryBlock, ParsingStringLength + 1);
-                MemoryBlock++;
+                char* NewParseString = calloc(ParsingStringLength + 1, 1);
                 strcpy(NewParseString, structure.ParsingString);
                 while (x != CurrentParseLength) {
                     NewParseString++;
@@ -72,8 +67,7 @@ static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
                 if (!(strcmp(CurrentParse, "") == 0)) {
                     int x = 0;
                     int CurrentParseLength = (int)strlen(CurrentParse);
-                    char *NewParseString = calloc(MemoryBlock, (int)strlen(structure.ParsingString) + 1);
-                    MemoryBlock++;
+                    char *NewParseString = calloc((int)strlen(structure.ParsingString) + 1, 1);
                     strcpy(NewParseString, structure.ParsingString);
                     NewParseString++;
                     while (x != CurrentParseLength) {
