@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/JakeMakesStuff/ParseThoseArgs.svg?branch=master)](https://travis-ci.com/JakeMakesStuff/ParseThoseArgs)
+
 # ParseThoseArgs
 A extremely light Python library (written in mainly C) in order to parse arguments, designed for chatbot libraries.
 
