@@ -12,9 +12,6 @@ typedef struct {
 // The structure for the argument parser.
 
 static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
-    char Space = ' ';
-    // Defines a space.
-
     if (strcmp(structure.ParsingString, "") == 0) {
         structure.HitAllArgs = 1;
         return structure;
