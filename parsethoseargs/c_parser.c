@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "Python.h"
 // Includes all needed stuff.
 
@@ -18,7 +19,7 @@ static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
     }
     // Returns if all arguments have been hit.
 
-    int InQuotes = 0;
+    bool InQuotes = false;
     // Sets if the parser is inside quotes.
 
     int ParsingStringLength = (int)strlen(structure.ParsingString);
@@ -30,7 +31,7 @@ static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
     while (current_char != '\0') {
         switch (current_char) {
             case '"':
-                if (InQuotes == 1) {
+                if (InQuotes) {
                     // This is the end of some quoted text.
                     ++*parsing_str;
                     goto parse_done;
@@ -38,11 +39,11 @@ static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
 
                 // Are we ignoring quotes?
                 if (!structure.IgnoreQuotes) {
-                    InQuotes = 1;
+                    InQuotes = true;
                     break;
                 }
             case ' ':
-                if (InQuotes == 0) {
+                if (!InQuotes) {
                     // Probably count this as a break.
                     if (strcmp(CurrentParse, "") == 0) {
                         break;
