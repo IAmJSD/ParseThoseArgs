@@ -22,8 +22,7 @@ static ArgParserStructure ArgParser_Next(ArgParserStructure structure) {
     bool InQuotes = false;
     // Sets if the parser is inside quotes.
 
-    int ParsingStringLength = (int)strlen(structure.ParsingString);
-    char* CurrentParse = PyMem_Calloc(ParsingStringLength, 1);
+    char* CurrentParse = PyMem_Calloc((int) strlen(structure.ParsingString), 1);
     // Defines the current parse.
 
     char* *parsing_str = &structure.ParsingString;
